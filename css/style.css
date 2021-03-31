@@ -122,3 +122,37 @@ main{
   bottom:0px;
   margin-bottom: 10px;          
 }
+
+#collapse{     
+  border:1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;         
+  font-size: 1.2em;
+  position:relative;
+  width:30px;
+  background-color: rgb(236, 83, 83);
+  box-shadow: inset -5px 0px 5px rgba(8, 8, 8, 0.726);
+}
+
+.bi-caret-right-fill, .bi-caret-left-fill{
+  color:rgb(192, 76, 76);
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background-color: rgb(212, 206, 150);            
+  height:50px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  border-top:2px solid rgb(163, 13, 13);
+  border-top-right-radius: 10px;
+  border-bottom:2px solid rgb(160, 11, 11);
+  border-bottom-right-radius: 10px;
+  box-shadow: inset -5px 0px 5px rgba(8, 8, 8, 0.774);
+}
+
+#berekeningWrapper{            
+  display:flex;
+  flex-direction: row;
+}
