@@ -157,10 +157,10 @@ main{
   flex-direction: row;
 }
 
-.visible{
-  display:block;
-}
-
 .hide{
   display:none;  
+}
+
+#idBaseNr{
+  width:70px;
 }
