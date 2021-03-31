@@ -103,3 +103,19 @@ main{
   background-color: rgb(236, 83, 83); 
   box-shadow: inset -5px 0px 5px rgba(0, 0, 0, 0.609);        
 }
+
+.wrapper{
+  padding:10px;  
+  margin-bottom: 40px;
+  background-color:rgb(246, 243, 225) ;
+  border-radius: 15px;
+  border:1px solid black;
+}
+
+.wrapper.feedback{
+  position: absolute;
+  height:200px;
+  width:calc(100% - 20px);
+  bottom:0px;
+  margin-bottom: 10px;          
+}
