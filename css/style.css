@@ -156,3 +156,11 @@ main{
   display:flex;
   flex-direction: row;
 }
+
+.visible{
+  display:block;
+}
+
+.hide{
+  display:none;  
+}
