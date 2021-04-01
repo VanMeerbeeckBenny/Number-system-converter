@@ -3,13 +3,14 @@
 window.addEventListener("load",init)
 var select;
 var arrow;
+var btnCollapse
 
 function init(){
     select = document.getElementById("idSelectOption");
-    let collapse= document.getElementById("idShowCalculationBtn");
+    btnCollapse= document.getElementById("idShowCalculationBtn");
         
     select.addEventListener("change",ActivateOption);
-    collapse.addEventListener("click",ToggleExpande)
+    btnCollapse.addEventListener("click",ToggleExpande)
    
 }
 
@@ -32,16 +33,18 @@ function ToggleExpande(){
     arrow = document.getElementById("arrow");
 
     berekening.classList.toggle("large");
-    setTimeout(toggleArrow,2000);          
+    setTimeout(toggleArrowAndContentBtn,2000);          
 }
 
-function toggleArrow(){
+function toggleArrowAndContentBtn(){    
         
     if (arrow.className == "bi bi-caret-right-fill"){
         arrow.classList.remove("bi-caret-right-fill");
         arrow.classList.add("bi-caret-left-fill");
+        btnCollapse.innerHTML = "Verberg berekening";
     }else{
         arrow.classList.remove("bi-caret-left-fill");
         arrow.classList.add("bi-caret-right-fill");
+        btnCollapse.innerHTML = "Toon berekening";
     }
 }
