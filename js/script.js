@@ -22,31 +22,36 @@ function init(){
 
 function CheckPriem(){
     let number = inputpriem.value;
-    let counter = Math.round(number / 2);
-    let isPrime = true;
+    let divisionNumber = Math.round(number / 2);
+    let isPrime = true;    
+
+    for(let i = 2;i <= divisionNumber;i++){
+        if(number % i == 0){
+            isPrime = false;
+        }
+    } 
+
+    SetFeedback(isPrime,number);   
+}
+
+function SetFeedback(isPrime,number){
     let feedback = document.getElementById("IdFeedback");
 
     const feedbackIsPrime = `Het getal ${number} is een priemgetal`;
     const feedbackIsNotPrime = `Het getal ${number} is geen priemgetal`;
 
-    for(let i = 2;i <= counter;i++){
-        if(number%i == 0){
-            isPrime = false;
-        }
-    } 
-    
-    if (isPrime == true){        
-        inputpriem.style.outlineColor = "green";
-        inputpriem.style.color = "green";
-        inputpriem.focus();
-        feedback.innerHTML = feedbackIsPrime;
-    }else{    
-        inputpriem.style.outlineColor = "red";
-        inputpriem.style.color = "red";
-        inputpriem.focus();   
-        feedback.innerHTML = feedbackIsNotPrime;
-    }
+    inputpriem.classList.remove("isPrime","isNotPrime");
 
+    if (isPrime == true){        
+        inputpriem.classList.add("isPrime");       
+        feedback.innerHTML = feedbackIsPrime;
+    }else if (isPrime == false){    
+        inputpriem.classList.add("isNotPrime"); 
+        feedback.innerHTML = feedbackIsNotPrime;
+    }else{
+        inputpriem.classList.remove("isPrime","isNotPrime");
+        feedback.innerHTML = "";
+    }
 }
 
 function Convert(){
