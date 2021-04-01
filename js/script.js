@@ -13,8 +13,19 @@ function init(){
    inputconvert = document.getElementById("idConvert");
    base = document.getElementById("idBaseNr");
 
-   btnCheckPriem = document.getElementById("checkPriemBtn");;
-   btnConvert = document.getElementById("idConvertBtn");;   
+   btnCheckPriem = document.getElementById("checkPriemBtn");
+   btnConvert = document.getElementById("idConvertBtn");  
+   
+   btnCheckPriem.addEventListener("click",CheckPriem);
+   btnConvert.addEventListener("click",Convert);
+}
+
+function CheckPriem(){
+
+}
+
+function Convert(){
+    
 }
 
 
