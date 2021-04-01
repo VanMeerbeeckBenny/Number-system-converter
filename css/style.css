@@ -182,3 +182,7 @@ main{
 #idBaseNr{
   width:70px;
 }
+
+.btn:first-of-type{
+  margin-right:5px;
+}
