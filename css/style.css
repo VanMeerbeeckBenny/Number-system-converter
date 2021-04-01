@@ -186,3 +186,17 @@ main{
 .btn:first-of-type{
   margin-right:5px;
 }
+
+.isPrime{
+  outline:1px solid green;
+  border:1px solid green;
+  color:green;
+}
+
+.isNotPrime{
+  outline:1px solid red; 
+  border:1px solid red; 
+  color:red;   
+}
+   
+         
