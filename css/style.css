@@ -153,12 +153,12 @@ main{
   box-shadow: inset -5px 0px 5px rgba(8, 8, 8, 0.774);
 }
 
-#berekeningWrapper{            
+#calculationWrapper{            
   display:flex;
   flex-direction: row;
 }
 
-.berekening{
+.calculation{
   background-color:var(--lightYellow);
   border-top:1px solid black;
   border-bottom:1px solid black;

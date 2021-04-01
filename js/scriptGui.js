@@ -29,7 +29,7 @@ function ActivateOption(){
 }
 
 function ToggleExpande(){
-    let berekening = document.querySelector(".berekening");
+    let berekening = document.querySelector(".calculation");
     arrow = document.getElementById("arrow");
 
     berekening.classList.toggle("large");
