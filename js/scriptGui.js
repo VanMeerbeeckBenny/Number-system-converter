@@ -2,10 +2,14 @@
 
 window.addEventListener("load",init)
 var select;
+var arrow;
 
 function init(){
     select = document.getElementById("idSelectOption");
+    let collapse= document.getElementById("idShowCalculationBtn");
+        
     select.addEventListener("change",ActivateOption);
+    collapse.addEventListener("click",ToggleExpande)
    
 }
 
@@ -20,5 +24,24 @@ function ActivateOption(){
         convert.classList.add("hide");
     }else{        
         priem.classList.add("hide");
+    }
+}
+
+function ToggleExpande(){
+    let berekening = document.querySelector(".berekening");
+    arrow = document.getElementById("arrow");
+
+    berekening.classList.toggle("large");
+    setTimeout(toggleArrow,2000);          
+}
+
+function toggleArrow(){
+        
+    if (arrow.className == "bi bi-caret-right-fill"){
+        arrow.classList.remove("bi-caret-right-fill");
+        arrow.classList.add("bi-caret-left-fill");
+    }else{
+        arrow.classList.remove("bi-caret-left-fill");
+        arrow.classList.add("bi-caret-right-fill");
     }
 }
