@@ -13,7 +13,7 @@
   --lightgreen: #EAF5F5;
   --black: #000000;
   --red: rgb(236, 83, 83);
-  --ligtYellow:rgb(248, 243, 199);
+  --lightYellow:rgb(248, 243, 199);
 }
 
 body {
@@ -110,7 +110,7 @@ main{
 .wrapper{
   padding:10px;  
   margin-bottom: 40px;
-  background-color:var(--ligtYellow) ;
+  background-color:var(--lightYellow) ;
   border-radius: 15px;
   border:1px solid black;
 }
@@ -156,6 +156,23 @@ main{
   display:flex;
   flex-direction: row;
 }
+
+.berekening{
+  background-color:var(--lightYellow);
+  border-top:1px solid black;
+  border-bottom:1px solid black;
+  height:100%;  
+  width:0px;          
+  transition: 2s ease-in-out; 
+  overflow-y: auto;
+  overflow-x: hidden;        
+ 
+}
+
+.large{
+  width: 700px;
+  transition:2s ease-in-out;
+} 
 
 .hide{
   display:none;  
