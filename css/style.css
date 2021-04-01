@@ -98,6 +98,7 @@ main{
 }
 
 #consoleWrapper {
+  width:320px;
   position: relative;
   padding:10px;
   border-top-left-radius: 15px;  
