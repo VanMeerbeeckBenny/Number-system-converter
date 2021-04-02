@@ -110,7 +110,28 @@ function ConvertCharacteristic(characteristic){
         }   
 
     resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
+    resultBeforeComma = ReplaceNumberToHexChars(resultBeforeComma);
     return resultBeforeComma
 }
 
+function ReplaceNumberToHexChars(converResult){
+    let hexaChar = [["10","A"],["11","B"],["12","C"],["13","D"],["14","E"],["15","F"]];
+    let decimal = [];
+    
+    converResult.forEach(nr=>{
+        if(nr > 9){
+        for (let i = 0; i < hexaChar.length;i++){
+            if(nr == hexaChar[i][0]){
+                let char = hexaChar[i][1];
+                decimal.push(char);    
+                break;          
+            }                
+            
+        }
+        }else{
+        decimal.push(nr)
+        }
+    }) 
+    return decimal.join("");
+}
 
