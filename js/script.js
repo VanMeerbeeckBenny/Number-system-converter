@@ -24,9 +24,9 @@ function init(){
 
 function CheckPriem(){
     let number = inputpriem.value;
-    const feedbackNegativeNumber = "geen geldige nummer , vull een positief nummer in";
+    const feedbackNegativeNumber = "geen geldig nummer , vull een positief geheel nummer in";
     
-    if(IsValideNumber(number)){
+    if(IsValideNumber(number)  && IsNotDecimal(number)){
         CheckNumberIsPrime(number);         
     }else{
         feedback.innerHTML = feedbackNegativeNumber;
@@ -53,6 +53,15 @@ function IsValideNumber(number){
         isPositive = false;      
     }
     return isPositive;
+}
+
+function IsNotDecimal(number){    
+    let isNotDecimal = true;
+
+    if(number.match(/[.,]/) ){         
+        isNotDecimal = false;      
+    }
+    return isNotDecimal;
 }
 
 function SetFeedback(isPrime,number){    
