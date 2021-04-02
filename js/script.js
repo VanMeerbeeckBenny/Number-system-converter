@@ -80,6 +80,7 @@ function Convert(){
 
     [characteristic,mantissa] = setMantissaAndCharacteristic();
     characteristic = ConvertCharacteristic(characteristic);
+    mantissa = ConvertMantissa(mantissa);
 
     console.log(characteristic,mantissa)
 }
@@ -112,6 +113,27 @@ function ConvertCharacteristic(characteristic){
     resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
     resultBeforeComma = ReplaceNumberToHexChars(resultBeforeComma);
     return resultBeforeComma
+}
+
+function ConvertMantissa(mantissa){
+    let resultAfterComma = [];
+    let result =`0.${mantissa}` ;
+    let baseNr = base.value;
+
+    while (result != 0){
+        if(result * baseNr >= 1){
+            resultAfterComma.push(Math.floor(result * baseNr));
+            result =(result * baseNr)- Math.floor(result * baseNr);
+        }else{
+         resultAfterComma.push("0");
+         result =(result * baseNr)
+        }       
+     
+    }
+
+    resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma;
+    resultAfterComma = resultAfterComma.join("");
+    return resultAfterComma;
 }
 
 function ReplaceNumberToHexChars(converResult){
