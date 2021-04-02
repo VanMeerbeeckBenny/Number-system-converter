@@ -24,31 +24,32 @@ function init(){
 
 function CheckPriem(){
     let number = inputpriem.value;
-    let divisionNumber = Math.round(number / 2);
-    let isPrime = true;  
-
     const feedbackNegativeNumber = "geen geldige nummer , vull een positief nummer in";
     
     if(IsValideNumber(number)){
-        for(let i = 2;i <= divisionNumber;i++){
-            if(number % i == 0){
-                isPrime = false;
-            }
-        }
-            
-        SetFeedback(isPrime,number); 
+        CheckNumberIsPrime(number);         
     }else{
         feedback.innerHTML = feedbackNegativeNumber;
-        inputpriem.classList.add("false");
-        inputpriem.value = ""; 
-        inputpriem.focus();
+        inputpriem.classList.add("false");       
     }      
 }
 
+function CheckNumberIsPrime(number){
+    let isPrime = true; 
+    let divisionNumber = Math.round(number / 2);
+
+    for(let i = 2;i <= divisionNumber;i++){
+        if(number % i == 0){
+            isPrime = false;
+        }
+    }
+
+    SetFeedback(isPrime,number);    
+}
 function IsValideNumber(number){    
     let isPositive = true;
 
-    if(number < 0 || number.trim() == ""){         
+    if(number <= 0 || number.trim() == "" ){         
         isPositive = false;      
     }
     return isPositive;
