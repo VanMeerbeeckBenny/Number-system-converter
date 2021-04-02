@@ -4,6 +4,7 @@ window.addEventListener("load",init)
 var inputpriem;
 var inputconvert;
 var base;
+var feedback;
 
 var btnCheckPriem;
 var btnConvert;
@@ -12,6 +13,7 @@ function init(){
    inputpriem = document.getElementById("inputPriem");
    inputconvert = document.getElementById("inputConvert");
    base = document.getElementById("idBaseNr");
+   feedback = document.getElementById("IdFeedback");
 
    btnCheckPriem = document.getElementById("checkPriemBtn");
    btnConvert = document.getElementById("idConvertBtn");  
@@ -23,19 +25,34 @@ function init(){
 function CheckPriem(){
     let number = inputpriem.value;
     let divisionNumber = Math.round(number / 2);
-    let isPrime = true;    
+    let isPrime = true;  
 
-    for(let i = 2;i <= divisionNumber;i++){
-        if(number % i == 0){
-            isPrime = false;
-        }
-    } 
-
-    SetFeedback(isPrime,number);   
+    const feedbackNegativeNumber = `${number} is een negative getal, enkel positive getallen zijn toegelaten`;
+    
+    if(IsPositiveNumber(number)){
+        for(let i = 2;i <= divisionNumber;i++){
+            if(number % i == 0){
+                isPrime = false;
+            }
+        } 
+    
+        SetFeedback(isPrime,number); 
+    }else{
+        feedback.innerHTML = feedbackNegativeNumber;
+        inputpriem.classList.add("isNotPrime"); 
+    }      
 }
 
-function SetFeedback(isPrime,number){
-    let feedback = document.getElementById("IdFeedback");
+function IsPositiveNumber(number){    
+    let isPositive = true;
+
+    if(number < 0){         
+        isPositive = false;      
+    }
+    return isPositive;
+}
+
+function SetFeedback(isPrime,number){    
 
     const feedbackIsPrime = `Het getal ${number} is een priemgetal`;
     const feedbackIsNotPrime = `Het getal ${number} is geen priemgetal`;
