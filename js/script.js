@@ -102,11 +102,11 @@ function setMantissaAndCharacteristic(){
 function ConvertCharacteristic(characteristic){
     let resultBeforeComma = [];
     let result = characteristic;
-    base = base.value;
+    let baseNr = base.value;
 
     while (result > 0){
-        resultBeforeComma.unshift(result%base);
-        result = (result - (result%base)) / base
+        resultBeforeComma.unshift(result%baseNr);
+        result = (result - (result%baseNr)) / baseNr
         }   
 
     resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
