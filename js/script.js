@@ -22,6 +22,8 @@ function init(){
    btnConvert.addEventListener("click",Convert);
 }
 
+// js for primenumber
+
 function CheckPriem(){
     let number = inputpriem.value;
     const feedbackNegativeNumber = "geen geldig nummer , vull een positief geheel nummer in";
@@ -82,6 +84,8 @@ function SetFeedback(isPrime,number){
         feedback.innerHTML = "";
     }
 }
+
+//js for converting to other number system
 
 function Convert(){
     let characteristic;
