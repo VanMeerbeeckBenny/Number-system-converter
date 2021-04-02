@@ -79,13 +79,15 @@ function Convert(){
     let mantissa;
 
     [characteristic,mantissa] = setMantissaAndCharacteristic();
+    characteristic = ConvertCharacteristic(characteristic);
+
     console.log(characteristic,mantissa)
 }
 
 function setMantissaAndCharacteristic(){
     let number = [...inputconvert.value.replace(",",".")];
     let characteristic;
-    let mantissa = 0.0; 
+    let mantissa = 0; 
 
     if(number.find(x => x == ".")){
         characteristic = number.slice(0,number.indexOf(".")).join("");
@@ -95,6 +97,20 @@ function setMantissaAndCharacteristic(){
     }  
 
     return [characteristic,mantissa];
+}
+
+function ConvertCharacteristic(characteristic){
+    let resultBeforeComma = [];
+    let result = characteristic;
+    base = base.value;
+
+    while (result > 0){
+        resultBeforeComma.unshift(result%base);
+        result = (result - (result%base)) / base
+        }   
+
+    resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
+    return resultBeforeComma
 }
 
 
