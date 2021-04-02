@@ -55,7 +55,26 @@ function SetFeedback(isPrime,number){
 }
 
 function Convert(){
-    
+    let characteristic;
+    let mantissa;
+
+    [characteristic,mantissa] = setMantissaAndCharacteristic();
+    console.log(characteristic,mantissa)
+}
+
+function setMantissaAndCharacteristic(){
+    let number = [...inputconvert.value.replace(",",".")];
+    let characteristic;
+    let mantissa = 0.0; 
+
+    if(number.find(x => x == ".")){
+        characteristic = number.slice(0,number.indexOf(".")).join("");
+        mantissa = number.slice(number.indexOf(".")+1).join("");
+    }else{
+        characteristic = number.join("");
+    }  
+
+    return [characteristic,mantissa];
 }
 
 
