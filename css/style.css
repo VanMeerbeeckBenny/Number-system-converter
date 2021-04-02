@@ -168,6 +168,9 @@ main{
   transition: 2s ease-in-out; 
   overflow-y: auto;
   overflow-x: hidden; 
+  display:flex;
+  flex-direction: column;
+  text-align: center;  
 }
 
 #idCalculateContent{
