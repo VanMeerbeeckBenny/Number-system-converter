@@ -35,18 +35,20 @@ function CheckPriem(){
                 isPrime = false;
             }
         }
-    
+            
         SetFeedback(isPrime,number); 
     }else{
         feedback.innerHTML = feedbackNegativeNumber;
-        inputpriem.classList.add("false"); 
+        inputpriem.classList.add("false");
+        inputpriem.value = ""; 
+        inputpriem.focus();
     }      
 }
 
 function IsValideNumber(number){    
     let isPositive = true;
 
-    if(number < 0 || number == ""){         
+    if(number < 0 || number.trim() == ""){         
         isPositive = false;      
     }
     return isPositive;
