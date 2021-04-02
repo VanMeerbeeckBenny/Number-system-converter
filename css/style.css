@@ -167,13 +167,15 @@ main{
   width:0px;          
   transition: 2s ease-in-out; 
   overflow-y: auto;
-  overflow-x: hidden;        
- 
+  overflow-x: hidden; 
+}
+
+#idCalculateContent{
+  width:700px;
 }
 
 .large{
-  width: 700px;
-  transition:2s ease-in-out;
+  width: 700px;  
 } 
 
 .hide{
@@ -204,5 +206,5 @@ main{
   padding-right:5px;
   text-align: right;
 }
-   
+  
          
