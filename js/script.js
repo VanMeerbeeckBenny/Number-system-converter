@@ -95,7 +95,12 @@ function Convert(){
     characteristic = ConvertCharacteristic(characteristic);
     mantissa = ConvertMantissa(mantissa);
 
-    console.log(characteristic,mantissa)
+    if(mantissa == 0){
+        feedback.innerHTML = characteristic;
+    }else{
+        feedback.innerHTML = `${characteristic}.${mantissa}`
+    }
+    
 }
 
 function setMantissaAndCharacteristic(){
