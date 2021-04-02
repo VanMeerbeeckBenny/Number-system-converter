@@ -187,13 +187,13 @@ main{
   margin-right:5px;
 }
 
-.isPrime{
+.correct{
   outline:1px solid green;
   border:1px solid green;
   color:green;
 }
 
-.isNotPrime{
+.false{
   outline:1px solid red; 
   border:1px solid red; 
   color:red;   
