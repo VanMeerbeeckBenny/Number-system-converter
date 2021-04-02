@@ -90,16 +90,26 @@ function SetFeedback(isPrime,number){
 function Convert(){
     let characteristic;
     let mantissa;
+    let number = inputconvert.value;
 
-    [characteristic,mantissa] = setMantissaAndCharacteristic();
-    characteristic = ConvertCharacteristic(characteristic);
-    mantissa = ConvertMantissa(mantissa);
+    const feedbackNegativeNumber = "geen geldig nummer , vul een positief nummer in";
 
-    if(mantissa == 0){
-        feedback.innerHTML = characteristic;
+    if(IsValideNumber(number)){
+
+        [characteristic,mantissa] = setMantissaAndCharacteristic();
+        characteristic = ConvertCharacteristic(characteristic);
+        mantissa = ConvertMantissa(mantissa);
+
+        if(mantissa == 0){
+            feedback.innerHTML = characteristic;
+        }else{
+            feedback.innerHTML = `${characteristic}.${mantissa}`;
+        }
     }else{
-        feedback.innerHTML = `${characteristic}.${mantissa}`
+        feedback.innerHTML = feedbackNegativeNumber;
+        inputconvert.classList.add("false");
     }
+    
     
 }
 
