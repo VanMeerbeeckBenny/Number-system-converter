@@ -27,26 +27,26 @@ function CheckPriem(){
     let divisionNumber = Math.round(number / 2);
     let isPrime = true;  
 
-    const feedbackNegativeNumber = `${number} is een negative getal, enkel positive getallen zijn toegelaten`;
+    const feedbackNegativeNumber = "geen geldige nummer , vull een positief nummer in";
     
-    if(IsPositiveNumber(number)){
+    if(IsValideNumber(number)){
         for(let i = 2;i <= divisionNumber;i++){
             if(number % i == 0){
                 isPrime = false;
             }
-        } 
+        }
     
         SetFeedback(isPrime,number); 
     }else{
         feedback.innerHTML = feedbackNegativeNumber;
-        inputpriem.classList.add("isNotPrime"); 
+        inputpriem.classList.add("false"); 
     }      
 }
 
-function IsPositiveNumber(number){    
+function IsValideNumber(number){    
     let isPositive = true;
 
-    if(number < 0){         
+    if(number < 0 || number == ""){         
         isPositive = false;      
     }
     return isPositive;
@@ -57,16 +57,16 @@ function SetFeedback(isPrime,number){
     const feedbackIsPrime = `Het getal ${number} is een priemgetal`;
     const feedbackIsNotPrime = `Het getal ${number} is geen priemgetal`;
 
-    inputpriem.classList.remove("isPrime","isNotPrime");
+    inputpriem.classList.remove("correct","false");
 
     if (isPrime == true){        
-        inputpriem.classList.add("isPrime");       
+        inputpriem.classList.add("correct");       
         feedback.innerHTML = feedbackIsPrime;
     }else if (isPrime == false){    
-        inputpriem.classList.add("isNotPrime"); 
+        inputpriem.classList.add("false"); 
         feedback.innerHTML = feedbackIsNotPrime;
     }else{
-        inputpriem.classList.remove("isPrime","isNotPrime");
+        inputpriem.classList.remove("correct","false");
         feedback.innerHTML = "";
     }
 }
