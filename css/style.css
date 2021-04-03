@@ -159,7 +159,7 @@ main{
   flex-direction: row;
 }
 
-.calculation{
+.calculation{  
   background-color:var(--lightYellow);
   border-top:1px solid black;
   border-bottom:1px solid black;
@@ -175,6 +175,23 @@ main{
 
 #idCalculateContent{
   width:700px;
+  display:flex;
+}
+
+.myrow{  
+  width:300px;
+  display:flex;
+  flex-direction:row;
+}
+
+#characteristic,#mantissa{
+  margin:20px;
+  width:100%;
+  flex-direction: row;
+}
+.calculationFeedback,.leftover{
+  text-align: left;
+  width:100px;
 }
 
 .large{
