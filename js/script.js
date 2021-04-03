@@ -5,6 +5,7 @@ var inputpriem;
 var inputconvert;
 var base;
 var feedback;
+var characteristicDiv;
 
 var btnCheckPriem;
 var btnConvert;
@@ -14,6 +15,8 @@ function init(){
    inputconvert = document.getElementById("inputConvert");
    base = document.getElementById("idBaseNr");
    feedback = document.getElementById("IdFeedback");
+   characteristicDiv = document.getElementById("characteristic");
+   
 
    btnCheckPriem = document.getElementById("checkPriemBtn");
    btnConvert = document.getElementById("idConvertBtn");  
@@ -132,8 +135,25 @@ function ConvertCharacteristic(characteristic){
     let resultBeforeComma = [];
     let result = characteristic;
     let baseNr = base.value;
+    
 
     while (result > 0){
+        let row = document.createElement("div");
+        let caclulation = document.createElement("div");
+        let leftover = document.createElement("div"); 
+        let feedback = `${result}/${baseNr}=${(result - (result%baseNr)) / baseNr}`;       
+
+        row.setAttribute("class","myrow");
+        caclulation.setAttribute("class","calculationFeedback")
+        leftover.setAttribute("class","leftover");
+        
+        caclulation.innerHTML = feedback;
+        leftover.innerHTML= result%baseNr;
+
+        row.appendChild(caclulation);
+        row.appendChild(leftover);
+        characteristicDiv.appendChild(row);
+
         resultBeforeComma.unshift(result%baseNr);
         result = (result - (result%baseNr)) / baseNr
         }   
