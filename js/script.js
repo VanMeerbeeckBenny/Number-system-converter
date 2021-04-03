@@ -179,8 +179,8 @@ function ConvertMantissa(mantissa){
      
     }
 
-    resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma;
-    resultAfterComma = resultAfterComma.join("");
+    resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma.join("");
+    resultAfterComma = resultAfterComma;
     return resultAfterComma;
 }
 
