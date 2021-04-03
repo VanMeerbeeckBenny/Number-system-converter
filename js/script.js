@@ -138,22 +138,8 @@ function ConvertCharacteristic(characteristic){
     
 
     while (result > 0){
-        let row = document.createElement("div");
-        let caclulation = document.createElement("div");
-        let leftover = document.createElement("div"); 
-        let feedback = `${result}/${baseNr}=${(result - (result%baseNr)) / baseNr}`;       
-
-        row.setAttribute("class","myrow");
-        caclulation.setAttribute("class","calculationFeedback")
-        leftover.setAttribute("class","leftover");
         
-        caclulation.innerHTML = feedback;
-        leftover.innerHTML= result%baseNr;
-
-        row.appendChild(caclulation);
-        row.appendChild(leftover);
-        characteristicDiv.appendChild(row);
-
+        ShowCalculationCharacteristic(result,baseNr);
         resultBeforeComma.unshift(result%baseNr);
         result = (result - (result%baseNr)) / baseNr
         }   
@@ -161,6 +147,25 @@ function ConvertCharacteristic(characteristic){
     resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
     resultBeforeComma = ReplaceNumberToHexChars(resultBeforeComma);
     return resultBeforeComma
+}
+
+function ShowCalculationCharacteristic(result,baseNr){
+
+    let row = document.createElement("div");
+    let caclulation = document.createElement("div");
+    let leftover = document.createElement("div"); 
+    let feedback = `${result}/${baseNr}=${(result - (result%baseNr)) / baseNr}`;       
+
+    row.setAttribute("class","myrow");
+    caclulation.setAttribute("class","calculationFeedback")
+    leftover.setAttribute("class","leftover");
+    
+    caclulation.innerHTML = feedback;
+    leftover.innerHTML= result%baseNr;
+
+    row.appendChild(caclulation);
+    row.appendChild(leftover);
+    characteristicDiv.appendChild(row);
 }
 
 function ConvertMantissa(mantissa){
