@@ -100,6 +100,7 @@ function Convert(){
 
     if(IsValideNumber(number)){
 
+        inputconvert.classList.remove("false");
         [characteristic,mantissa] = setMantissaAndCharacteristic();
         characteristic = ConvertCharacteristic(characteristic);
         mantissa = ConvertMantissa(mantissa);
