@@ -173,8 +173,10 @@ function ConvertMantissa(mantissa){
     let resultAfterComma = [];
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
+    let counter = 0;
+    const maxIteration = 20;
 
-    while (result != 0){
+    while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
         if(result * baseNr >= 1){
             resultAfterComma.push(Math.floor(result * baseNr));
@@ -182,8 +184,21 @@ function ConvertMantissa(mantissa){
         }else{
          resultAfterComma.push("0");
          result =(result * baseNr)
-        }       
-     
+        }   
+        
+        counter++;     
+    }
+    if(counter == maxIteration){
+        let mantissaDiv = document.getElementById("mantissa");
+        let row = document.createElement("div");
+        let caclulation = document.createElement("div");
+
+        row.setAttribute("class","myrow");
+        caclulation.setAttribute("class","calculationFeedback");       
+        caclulation.innerHTML = "......";
+
+        row.appendChild(caclulation);
+        mantissaDiv.appendChild(row);
     }
 
     resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma;
