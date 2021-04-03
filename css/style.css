@@ -179,7 +179,7 @@ main{
 }
 
 .myrow{  
-  width:300px;
+  width:350px;
   display:flex;
   flex-direction:row;
 }
@@ -189,13 +189,18 @@ main{
   width:100%;
   flex-direction: row;
 }
-.calculationFeedback,.leftover{
-  text-align: left;
-  width:100px;
+.calculationFeedback,.leftover{  
+  width:200px;
 }
 
+.calculationFeedback{
+text-align: left;
+}
+.leftover{
+  text-align:right;
+}
 .large{
-  width: 700px;  
+  width: 800px;  
 } 
 
 .hide{
