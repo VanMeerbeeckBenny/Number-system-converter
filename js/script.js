@@ -186,8 +186,8 @@ function ConvertMantissa(mantissa){
      
     }
 
-    resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma.join("");
-    resultAfterComma = resultAfterComma;
+    resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma;
+    resultAfterComma = ReplaceNumberToHexChars(resultAfterComma);
     return resultAfterComma;
 }
 
