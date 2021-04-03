@@ -17,6 +17,7 @@ function init(){
    feedback = document.getElementById("IdFeedback");
    characteristicDiv = document.getElementById("characteristic");
    
+   
 
    btnCheckPriem = document.getElementById("checkPriemBtn");
    btnConvert = document.getElementById("idConvertBtn");  
@@ -174,6 +175,7 @@ function ConvertMantissa(mantissa){
     let baseNr = base.value;
 
     while (result != 0){
+        ShowCalculationMantissa(result,baseNr);
         if(result * baseNr >= 1){
             resultAfterComma.push(Math.floor(result * baseNr));
             result =(result * baseNr)- Math.floor(result * baseNr);
@@ -187,6 +189,26 @@ function ConvertMantissa(mantissa){
     resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma.join("");
     resultAfterComma = resultAfterComma;
     return resultAfterComma;
+}
+
+function ShowCalculationMantissa(result,baseNr){
+
+    let row = document.createElement("div");
+    let caclulation = document.createElement("div");
+    let leftover = document.createElement("div"); 
+    let mantissaDiv = document.getElementById("mantissa");
+    let feedback = `${parseFloat(result).toFixed(5)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(5)}`;       
+
+    row.setAttribute("class","myrow");
+    caclulation.setAttribute("class","calculationFeedback")
+    leftover.setAttribute("class","leftover");
+    
+    caclulation.innerHTML = feedback;
+    leftover.innerHTML= Math.floor(result * baseNr);
+
+    row.appendChild(caclulation);
+    row.appendChild(leftover);
+    mantissaDiv.appendChild(row);
 }
 
 function ReplaceNumberToHexChars(converResult){
