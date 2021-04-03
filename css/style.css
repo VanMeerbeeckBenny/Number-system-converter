@@ -98,7 +98,7 @@ main{
 }
 
 #consoleWrapper {
-  width:320px;
+  width:330px;
   position: relative;
   padding:10px;
   border-top-left-radius: 15px;  
@@ -189,8 +189,11 @@ main{
   width:100%;
   flex-direction: row;
 }
-.calculationFeedback,.leftover{  
-  width:200px;
+.calculationFeedback{  
+  width:250px;
+}
+.leftover{
+  width:50px;
 }
 
 .calculationFeedback{
