@@ -182,7 +182,7 @@ function ConvertMantissa(mantissa){
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
     let counter = 0;
-    const maxIteration = maxNrAfterComma.value;    
+    const maxIteration = IsValideNumber(maxNrAfterComma.value)?maxNrAfterComma.value:20;    
 
     while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
