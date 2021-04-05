@@ -105,7 +105,7 @@ function Convert(){
     const feedbackNegativeNumber = "geen geldig nummer , vul een positief nummer in";
 
     if(IsValideNumber(number)){
-
+        ClearShowedConvertion();
         inputconvert.classList.remove("false");
         [characteristic,mantissa] = setMantissaAndCharacteristic();
         characteristic = ConvertCharacteristic(characteristic);
@@ -182,7 +182,7 @@ function ConvertMantissa(mantissa){
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
     let counter = 0;
-    const maxIteration = maxNrAfterComma.value;
+    const maxIteration = maxNrAfterComma.value;    
 
     while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
@@ -221,7 +221,7 @@ function ShowCalculationMantissa(result,baseNr){
     let leftover = document.createElement("div"); 
     
     let feedback = `${parseFloat(result).toFixed(maxLengthMantissa)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(maxLengthMantissa)}`;       
-
+    
     row.setAttribute("class","myrow");
     caclulation.setAttribute("class","calculationFeedback")
     leftover.setAttribute("class","leftover");
@@ -234,7 +234,15 @@ function ShowCalculationMantissa(result,baseNr){
     mantissaDiv.appendChild(row);
 }
 
-function ClearResult(){}
+function ClearShowedConvertion(){
+    while(mantissaDiv.firstChild){
+        mantissaDiv.removeChild(mantissaDiv.firstChild);
+    }
+
+    while(characteristicDiv.firstChild){
+        characteristicDiv.removeChild(characteristicDiv.firstChild);
+    }
+}
 
 function ReplaceNumberToHexChars(converResult){
     let hexaChar = [["10","A"],["11","B"],["12","C"],["13","D"],["14","E"],["15","F"]];
