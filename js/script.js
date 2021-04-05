@@ -6,6 +6,7 @@ var inputconvert;
 var base;
 var feedback;
 var characteristicDiv;
+var mantissaDiv;
 var maxLengthMantissa;
 var maxNrAfterComma;
 
@@ -20,6 +21,7 @@ function init(){
    base = document.getElementById("idBaseNr");
    feedback = document.getElementById("IdFeedback");
    characteristicDiv = document.getElementById("characteristic");
+   mantissaDiv = document.getElementById("mantissa");
    
    
 
@@ -217,7 +219,7 @@ function ShowCalculationMantissa(result,baseNr){
     let row = document.createElement("div");
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
-    let mantissaDiv = document.getElementById("mantissa");
+    
     let feedback = `${parseFloat(result).toFixed(maxLengthMantissa)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(maxLengthMantissa)}`;       
 
     row.setAttribute("class","myrow");
@@ -231,6 +233,8 @@ function ShowCalculationMantissa(result,baseNr){
     row.appendChild(leftover);
     mantissaDiv.appendChild(row);
 }
+
+function ClearResult(){}
 
 function ReplaceNumberToHexChars(converResult){
     let hexaChar = [["10","A"],["11","B"],["12","C"],["13","D"],["14","E"],["15","F"]];
