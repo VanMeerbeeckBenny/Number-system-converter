@@ -7,12 +7,15 @@ var base;
 var feedback;
 var characteristicDiv;
 var maxLengthMantissa;
+var maxNrAfterComma;
 
 var btnCheckPriem;
 var btnConvert;
 
 function init(){
+
    inputpriem = document.getElementById("inputPriem");
+   maxNrAfterComma = document.getElementById("inputMaxNrAfterComma");
    inputconvert = document.getElementById("inputConvert");
    base = document.getElementById("idBaseNr");
    feedback = document.getElementById("IdFeedback");
@@ -177,7 +180,7 @@ function ConvertMantissa(mantissa){
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
     let counter = 0;
-    const maxIteration = 20;
+    const maxIteration = maxNrAfterComma.value;
 
     while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
