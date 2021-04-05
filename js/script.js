@@ -6,6 +6,7 @@ var inputconvert;
 var base;
 var feedback;
 var characteristicDiv;
+var maxLengthMantissa;
 
 var btnCheckPriem;
 var btnConvert;
@@ -172,6 +173,7 @@ function ShowCalculationCharacteristic(result,baseNr){
 
 function ConvertMantissa(mantissa){
     let resultAfterComma = [];
+    maxLengthMantissa = mantissa.length;
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
     let counter = 0;
@@ -213,7 +215,7 @@ function ShowCalculationMantissa(result,baseNr){
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
     let mantissaDiv = document.getElementById("mantissa");
-    let feedback = `${parseFloat(result).toFixed(5)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(5)}`;       
+    let feedback = `${parseFloat(result).toFixed(maxLengthMantissa)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(maxLengthMantissa)}`;       
 
     row.setAttribute("class","myrow");
     caclulation.setAttribute("class","calculationFeedback")
