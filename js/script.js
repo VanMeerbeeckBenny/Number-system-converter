@@ -183,7 +183,7 @@ function ConvertMantissa(mantissa){
     let baseNr = base.value;
     let counter = 0;
     const maxIteration = IsValideNumber(maxNrAfterComma.value)?maxNrAfterComma.value:20;    
-
+    
     while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
         if(result * baseNr >= 1){
@@ -210,7 +210,7 @@ function ConvertMantissa(mantissa){
     }
 
     resultAfterComma = resultAfterComma.length == 0?"0":resultAfterComma;
-    resultAfterComma = ReplaceNumberToHexChars(resultAfterComma);
+    resultAfterComma = resultAfterComma != 0?ReplaceNumberToHexChars(resultAfterComma):0;
     return resultAfterComma;
 }
 
