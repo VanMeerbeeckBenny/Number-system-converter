@@ -178,10 +178,23 @@ main{
   display:flex;
 }
 
-.myrow{  
+.myrow{ 
+  height:30px; 
   width:350px;
   display:flex;
   flex-direction:row;
+}
+
+#idFinalResult,h1{
+  width:800px;
+}
+
+#idFinalResult{
+  width:800px;
+  font-size: large;
+  letter-spacing: 5px;
+  word-wrap: break-word;
+  padding:0 10px;
 }
 
 #characteristic,#mantissa{

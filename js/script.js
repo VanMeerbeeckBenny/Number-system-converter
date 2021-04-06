@@ -9,6 +9,7 @@ var characteristicDiv;
 var mantissaDiv;
 var maxLengthMantissa;
 var maxNrAfterComma;
+var finalResult;
 
 var btnCheckPriem;
 var btnConvert;
@@ -97,7 +98,7 @@ function SetFeedback(isPrime,number){
 
 //js for converting to other number system
 
-function Convert(){
+function Convert(){    
     let characteristic;
     let mantissa;
     let number = inputconvert.value;
@@ -113,12 +114,18 @@ function Convert(){
 
         if(mantissa == 0){
             feedback.innerHTML = characteristic;
+            finalResult = characteristic;
         }else{
             feedback.innerHTML = `${characteristic}.${mantissa}`;
+            finalResult = `${characteristic}.${mantissa}`;
         }
     }else{
         feedback.innerHTML = feedbackNegativeNumber;
         inputconvert.classList.add("false");
+    }
+
+    if(isOpen == true){
+        AnimateResult();
     }
     
     
@@ -263,5 +270,78 @@ function ReplaceNumberToHexChars(converResult){
         }
     }) 
     return decimal.join("");
+}
+
+function AnimateResult(){
+    let charactericresult = document.getElementById("characteristic").getElementsByClassName("leftover");
+    let  mantissaResult = document.getElementById("mantissa").getElementsByClassName("leftover");
+    let finalResultdiv = document.getElementById("idFinalResult");
+    let counter = charactericresult.length-1;
+    let counterOutput = 0;
+    let done = false;
+
+    finalResultdiv.innerHTML = "";
+
+    let outputFinalResult = [...finalResult];
+    
+    let interval = setInterval(ShowCharacteristic,250);
+    let interval2 = setInterval(HideCharacteristic,500);    
+    btnConvert.setAttribute("disabled","true");
+    btnCollapse.setAttribute("disabled","true");
+
+    function ShowCharacteristic(){ 
+        if(counter < 0){
+            clearInterval(interval);
+            }else{
+                charactericresult[counter].style.fontSize = "1.5em" ;
+                charactericresult[counter].style.color="red" ;                
+            }           
+            
+        }
+
+    function HideCharacteristic(){   
+        if(counter < 0){            
+            clearInterval(interval2);
+            done =true;  
+            counter = 0;
+            counterOutput ++;
+            finalResultdiv.innerHTML += ".";
+        }else{
+            charactericresult[counter].style.fontSize = "1em" ; 
+            charactericresult[counter].style.color="black" ;             
+            finalResultdiv.innerHTML += outputFinalResult[counterOutput];
+            counter--; 
+            counterOutput++; 
+        }  
+        
+        if(done){
+            interval = setInterval(ShowMantissa,250);
+            interval2 = setInterval(HideMantissa,500);       
+            
+            function ShowMantissa(){ 
+                if(counter >= mantissaResult.length){
+                    clearInterval(interval);
+                    } else{
+                        mantissaResult[counter].style.fontSize = "1.5em" ;
+                        mantissaResult[counter].style.color="red" ;  
+                    }              
+                }
+        
+            function HideMantissa(){   
+                if(counter >= mantissaResult.length){                    
+                    clearInterval(interval2);
+                    btnConvert.removeAttribute("disabled");
+                    btnCollapse.removeAttribute("disabled");
+                    }else{                        
+                        mantissaResult[counter].style.fontSize = "1em" ; 
+                        mantissaResult[counter].style.color="black" ; 
+                        finalResultdiv.innerHTML += outputFinalResult[counterOutput];                
+                        counter++; 
+                        counterOutput ++;                
+                        done =false;                        
+                    }              
+            }
+        }       
+    }  
 }
 
