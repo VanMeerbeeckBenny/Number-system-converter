@@ -284,26 +284,23 @@ function AnimateResult(){
 
     let outputFinalResult = [...finalResult];
     
-    let interval = setInterval(ShowCharacteristic,500);
-    let interval2 = setInterval(HideCharacteristic,1000);
-
-    console.log(charactericresult[counter]);
+    let interval = setInterval(ShowCharacteristic,250);
+    let interval2 = setInterval(HideCharacteristic,500);    
+    btnConvert.setAttribute("disabled","true");
+    btnCollapse.setAttribute("disabled","true");
 
     function ShowCharacteristic(){ 
         if(counter < 0){
             clearInterval(interval);
-        }else{
-            charactericresult[counter].style.fontSize = "1.5em" ;
-            charactericresult[counter].style.color="red" ; 
-              
-        }       
-                    
+            }else{
+                charactericresult[counter].style.fontSize = "1.5em" ;
+                charactericresult[counter].style.color="red" ;                
+            }           
             
         }
 
     function HideCharacteristic(){   
-        if(counter < 0){
-            clearInterval(interval);
+        if(counter < 0){            
             clearInterval(interval2);
             done =true;  
             counter = 0;
@@ -312,50 +309,39 @@ function AnimateResult(){
         }else{
             charactericresult[counter].style.fontSize = "1em" ; 
             charactericresult[counter].style.color="black" ;             
-        finalResultdiv.innerHTML += outputFinalResult[counterOutput];
-        counter--; 
-        counterOutput++; 
+            finalResultdiv.innerHTML += outputFinalResult[counterOutput];
+            counter--; 
+            counterOutput++; 
         }  
         
         if(done){
-            let interval = setInterval(ShowMantissa,500);
-            let interval2 = setInterval(HideMantissa,1000);       
+            interval = setInterval(ShowMantissa,250);
+            interval2 = setInterval(HideMantissa,500);       
             
             function ShowMantissa(){ 
-                if(counter >= mantissaResult.lengt){
-                    clearInterval(interval2);
-                } else{
-                    mantissaResult[counter].style.fontSize = "1.5em" ;
-                    mantissaResult[counter].style.color="red" ;  
-                }     
-                         
-                    
+                if(counter >= mantissaResult.length){
+                    clearInterval(interval);
+                    } else{
+                        mantissaResult[counter].style.fontSize = "1.5em" ;
+                        mantissaResult[counter].style.color="red" ;  
+                    }              
                 }
         
             function HideMantissa(){   
-                if(counter >= mantissaResult.length){
-                    clearInterval(interval);
+                if(counter >= mantissaResult.length){                    
                     clearInterval(interval2);
-                }else{
-                    mantissaResult[counter].style.fontSize = "1em" ; 
-                    mantissaResult[counter].style.color="black" ; 
-                finalResultdiv.innerHTML += outputFinalResult[counterOutput];                
-                counter++; 
-                counterOutput ++;                
-                done =false; 
-                }     
-                 
-                
+                    btnConvert.removeAttribute("disabled");
+                    btnCollapse.removeAttribute("disabled");
+                    }else{                        
+                        mantissaResult[counter].style.fontSize = "1em" ; 
+                        mantissaResult[counter].style.color="black" ; 
+                        finalResultdiv.innerHTML += outputFinalResult[counterOutput];                
+                        counter++; 
+                        counterOutput ++;                
+                        done =false;                        
+                    }              
             }
-            }
-        
-        
-        
-    }
-
-    
-          
-           
-    
+        }       
+    }  
 }
 
