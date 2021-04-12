@@ -346,7 +346,7 @@ function AnimateResult(){
                         done =false;                        
                     }              
             }
-        }else{
+        }else if (outputFinalResult.length == counterOutput){
             btnConvert.removeAttribute("disabled");
             btnCollapse.removeAttribute("disabled");
         }       
