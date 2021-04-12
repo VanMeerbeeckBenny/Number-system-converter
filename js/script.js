@@ -63,12 +63,7 @@ function CheckNumberIsPrime(number){
     SetFeedback(isPrime,number);    
 }
 function IsValideNumber(number){    
-    let isPositive = true;
-
-    if(number <= 0 || number.trim() == "" ){         
-        isPositive = false;      
-    }
-    return isPositive;
+   return number >= 0 && number.trim() != ""; 
 }
 
 function IsNotDecimal(number){    
