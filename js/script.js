@@ -138,7 +138,7 @@ function Convert(){
 }
 
 function HasMaximumOneDecimalSeperator(number){
-    return number.match(/^\d{1,}[.]{0,1}\d{1,}$/);
+    return number.match(/^\d*[.]{0,1}\d*$/);
 }
 
 function setMantissaAndCharacteristic(){
