@@ -284,12 +284,12 @@ function AnimateResult(){
 
     let outputFinalResult = [...finalResult];
     
-    let interval = setInterval(ShowCharacteristic,250);
-    let interval2 = setInterval(HideCharacteristic,500);    
+    let interval = setInterval(HighlightCharacteristic,250);
+    let interval2 = setInterval(ResetCharacteristic,500);    
     btnConvert.setAttribute("disabled","true");
     btnCollapse.setAttribute("disabled","true");
 
-    function ShowCharacteristic(){ 
+    function HighlightCharacteristic(){ 
         if(counter < 0){
             clearInterval(interval);
             }else{
@@ -299,13 +299,12 @@ function AnimateResult(){
             
         }
 
-    function HideCharacteristic(){   
+    function ResetCharacteristic(){   
         if(counter < 0){            
             clearInterval(interval2);
             done =true;  
             counter = 0;
-            counterOutput ++;
-            finalResultdiv.innerHTML += ".";
+            counterOutput ++;            
         }else{
             charactericresult[counter].style.fontSize = "1em" ; 
             charactericresult[counter].style.color="black" ;             
@@ -314,11 +313,12 @@ function AnimateResult(){
             counterOutput++; 
         }  
         
-        if(done){
-            interval = setInterval(ShowMantissa,250);
-            interval2 = setInterval(HideMantissa,500);       
+        if(done && typeof outputFinalResult[counterOutput]  != "undefined"){
+            interval = setInterval(HighlightMantissa,250);
+            interval2 = setInterval(ResetMantissa,500);
+            finalResultdiv.innerHTML += ".";       
             
-            function ShowMantissa(){ 
+            function HighlightMantissa(){ 
                 if(counter >= mantissaResult.length){
                     clearInterval(interval);
                     } else{
@@ -327,7 +327,7 @@ function AnimateResult(){
                     }              
                 }
         
-            function HideMantissa(){   
+            function ResetMantissa(){   
                 if(counter >= mantissaResult.length){                    
                     clearInterval(interval2);
                     btnConvert.removeAttribute("disabled");
@@ -341,7 +341,10 @@ function AnimateResult(){
                         done =false;                        
                     }              
             }
-        }       
+                }else{
+                    btnConvert.removeAttribute("disabled");
+                    btnCollapse.removeAttribute("disabled");
+                }       
     }  
 }
 
