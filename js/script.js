@@ -101,11 +101,11 @@ function SetFeedback(isPrime,number){
 function Convert(){    
     let characteristic;
     let mantissa;
-    let number = inputconvert.value;
+    let number = inputconvert.value.replace(",",".");
 
-    const feedbackNegativeNumber = "geen geldig nummer , vul een positief nummer in";
+    const feedbackNegativeNumber = "geen geldig nummer , vul een positief decimaal nummer in";
 
-    if(IsValideNumber(number)){
+    if(IsValideNumber(number) && HasMaximumOneDecimalSeperator(number)){
         ClearShowedConvertion();
         inputconvert.classList.remove("false");
         [characteristic,mantissa] = setMantissaAndCharacteristic();
@@ -129,6 +129,10 @@ function Convert(){
     }
     
     
+}
+
+function HasMaximumOneDecimalSeperator(number){
+    return number.match(/^\d{1,}[.]{0,1}\d{1,}$/);
 }
 
 function setMantissaAndCharacteristic(){
@@ -341,10 +345,10 @@ function AnimateResult(){
                         done =false;                        
                     }              
             }
-                }else{
-                    btnConvert.removeAttribute("disabled");
-                    btnCollapse.removeAttribute("disabled");
-                }       
+        }else{
+            btnConvert.removeAttribute("disabled");
+            btnCollapse.removeAttribute("disabled");
+        }       
     }  
 }
 
