@@ -24,8 +24,10 @@ function ActivateOption(){
 
     if(select.value == "priemgetal"){        
         convert.classList.add("hide");
+        feedback.innerHTML = feedbackPrime;
     }else{        
         priem.classList.add("hide");
+        feedback.innerHTML = feedbackConvert;
     }
 }
 

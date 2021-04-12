@@ -10,6 +10,8 @@ var mantissaDiv;
 var maxLengthMantissa;
 var maxNrAfterComma;
 var finalResult;
+var feedbackPrime = "";
+var feedbackConvert= "";
 
 var btnCheckPriem;
 var btnConvert;
@@ -42,6 +44,7 @@ function CheckPriem(){
     if(IsValideNumber(number)  && IsNotDecimal(number)){
         CheckNumberIsPrime(number);         
     }else{
+        feedbackPrime = feedbackNegativeNumber;
         feedback.innerHTML = feedbackNegativeNumber;
         inputpriem.classList.add("false");       
     }      
@@ -85,15 +88,16 @@ function SetFeedback(isPrime,number){
     inputpriem.classList.remove("correct","false");
 
     if (isPrime == true){        
-        inputpriem.classList.add("correct");       
-        feedback.innerHTML = feedbackIsPrime;
+        inputpriem.classList.add("correct"); 
+        feedbackPrime = feedbackIsPrime;          
     }else if (isPrime == false){    
         inputpriem.classList.add("false"); 
-        feedback.innerHTML = feedbackIsNotPrime;
+        feedbackPrime = feedbackIsNotPrime;        
     }else{
-        inputpriem.classList.remove("correct","false");
-        feedback.innerHTML = "";
+        inputpriem.classList.remove("correct","false");        
     }
+
+    feedback.innerHTML = feedbackPrime;
 }
 
 //js for converting to other number system
@@ -113,20 +117,22 @@ function Convert(){
         mantissa = ConvertMantissa(mantissa);
 
         if(mantissa == 0){
-            feedback.innerHTML = characteristic;
+            feedbackConvert = characteristic;            
             finalResult = characteristic;
         }else{
-            feedback.innerHTML = `${characteristic}.${mantissa}`;
+            feedbackConvert = `${characteristic}.${mantissa}`;            
             finalResult = `${characteristic}.${mantissa}`;
         }
     }else{
-        feedback.innerHTML = feedbackNegativeNumber;
-        inputconvert.classList.add("false");
+        feedbackConvert = feedbackNegativeNumber;        
+        inputconvert.classList.add("false");        
     }
 
     if(isOpen == true){
         AnimateResult();
     }
+
+    feedback.innerHTML = feedbackConvert;
     
     
 }
