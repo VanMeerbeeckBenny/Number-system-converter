@@ -211,7 +211,13 @@ function ConvertMantissa(mantissa){
         ShowCalculationMantissa(result,baseNr);
         if(result * baseNr >= 1){
             resultAfterComma.push(Math.floor(result * baseNr));
-            result =(result * baseNr)- Math.floor(result * baseNr);
+            result = `${result * baseNr}`;
+            result = [...result];
+            result.find(x=> x ==".")?result.splice(0,result.indexOf("."),0):result = 0;
+            result = result != 0 ?result.join(""):0;
+            /*result =(result * baseNr)- Math.floor(result * baseNr); 
+            this was original used but gives quirky results at times beceaus minus in binairy 
+            is difrent then humans calculate */
         }else{
          resultAfterComma.push("0");
          result =(result * baseNr)
@@ -238,7 +244,7 @@ function ConvertMantissa(mantissa){
 }
 
 function ShowCalculationMantissa(result,baseNr){
-    
+
     let row = document.createElement("div");
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
