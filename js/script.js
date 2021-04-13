@@ -42,7 +42,7 @@ function CheckPriem(){
     let number = inputpriem.value;
     const feedbackNegativeNumber = "geen geldig nummer , vull een positief geheel nummer in";
     
-    if(IsValideNumber(number)  && IsNotDecimal(number)){
+    if(NotNegativeNumberOrEmpty(number)  && IsNotDecimal(number)){
         CheckNumberIsPrime(number);         
     }else{
         feedbackPrime = feedbackNegativeNumber;
@@ -63,7 +63,7 @@ function CheckNumberIsPrime(number){
 
     SetFeedback(isPrime,number);    
 }
-function IsValideNumber(number){    
+function NotNegativeNumberOrEmpty(number){    
    return number >= 0 && number.trim() != ""; 
 }
 
@@ -105,7 +105,7 @@ function Convert(){
 
     const feedbackNegativeNumber = "geen geldig nummer , vul een positief decimaal nummer in";
 
-    if(IsValideNumber(number) && HasMaximumOneDecimalSeperator(number)){
+    if(NotNegativeNumberOrEmpty(number) && InputIsCorrectFormat(number)){
         ClearShowedConvertion();
         noErrors = true;
         inputconvert.classList.remove("false");
@@ -135,7 +135,7 @@ function Convert(){
     
 }
 
-function HasMaximumOneDecimalSeperator(number){
+function InputIsCorrectFormat(number){
     return number.match(/^\d*[.]{0,1}\d*$/);
 }
 
@@ -197,7 +197,7 @@ function ConvertMantissa(mantissa){
     let result =`0.${mantissa}` ;
     let baseNr = base.value;
     let counter = 0;
-    const maxIteration = IsValideNumber(maxNrAfterComma.value)?maxNrAfterComma.value:20;    
+    const maxIteration = NotNegativeNumberOrEmpty(maxNrAfterComma.value)?maxNrAfterComma.value:20;    
     
     while (result != 0 && counter < maxIteration){
         ShowCalculationMantissa(result,baseNr);
