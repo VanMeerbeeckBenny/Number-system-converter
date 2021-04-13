@@ -10,9 +10,9 @@ var mantissaDiv;
 var maxLengthMantissa;
 var maxNrAfterComma;
 var finalResult;
-let charactericresult;
-let mantissaResult;
-let finalResultdiv;
+var charactericresult;
+var mantissaResult;
+var finalResultdiv;
 var feedbackPrime = "";
 var feedbackConvert= "";
 var noErrors = true;
@@ -216,8 +216,7 @@ function ConvertMantissa(mantissa){
             result.find(x=> x ==".")?result.splice(0,result.indexOf("."),0):result = 0;
             result = result != 0 ?result.join(""):0;
             /*result =(result * baseNr)- Math.floor(result * baseNr); 
-            this was original used but gives quirky results at times beceaus minus in binairy 
-            is difrent then humans calculate */
+            this was original used but the used formula is more accurate */
         }else{
          resultAfterComma.push("0");
          result =(result * baseNr)
