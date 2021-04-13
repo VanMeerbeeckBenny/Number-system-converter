@@ -12,6 +12,7 @@ var maxNrAfterComma;
 var finalResult;
 var feedbackPrime = "";
 var feedbackConvert= "";
+var noErrors = true;
 
 var btnCheckPriem;
 var btnConvert;
@@ -106,6 +107,7 @@ function Convert(){
 
     if(IsValideNumber(number) && HasMaximumOneDecimalSeperator(number)){
         ClearShowedConvertion();
+        noErrors = true;
         inputconvert.classList.remove("false");
         [characteristic,mantissa] = setMantissaAndCharacteristic();
         characteristic = ConvertCharacteristic(characteristic);
@@ -119,11 +121,12 @@ function Convert(){
             finalResult = `${characteristic}.${mantissa}`;
         }
     }else{
+        noErrors = false;
         feedbackConvert = feedbackNegativeNumber;        
         inputconvert.classList.add("false");        
     }
 
-    if(isOpen == true){
+    if(isOpen && noErrors){
         AnimateResult();
     }
 

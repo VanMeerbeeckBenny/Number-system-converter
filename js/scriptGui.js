@@ -47,7 +47,9 @@ function toggleArrowAndContentBtn(){
         arrow.classList.add("bi-caret-left-fill");
         btnCollapse.innerHTML = "Verberg berekening";
         isOpen = true;
-        AnimateResult();
+        if(noErrors){
+            AnimateResult();
+        }        
     }else{
         arrow.classList.remove("bi-caret-left-fill");
         arrow.classList.add("bi-caret-right-fill");
