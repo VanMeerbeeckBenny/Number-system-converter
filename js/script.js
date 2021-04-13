@@ -10,6 +10,9 @@ var mantissaDiv;
 var maxLengthMantissa;
 var maxNrAfterComma;
 var finalResult;
+let charactericresult;
+let mantissaResult;
+let finalResultdiv;
 var feedbackPrime = "";
 var feedbackConvert= "";
 var noErrors = true;
@@ -26,6 +29,9 @@ function init(){
    feedback = document.getElementById("IdFeedback");
    characteristicDiv = document.getElementById("characteristic");
    mantissaDiv = document.getElementById("mantissa");
+   charactericresult = document.getElementById("characteristic").getElementsByClassName("leftover");
+   mantissaResult = document.getElementById("mantissa").getElementsByClassName("leftover");
+   finalResultdiv = document.getElementById("idFinalResult");
    
    
 
@@ -105,8 +111,10 @@ function Convert(){
 
     const feedbackNegativeNumber = "geen geldig nummer , vul een positief decimaal nummer in";
 
+    ClearShowedConvertion();
+
     if(NotNegativeNumberOrEmpty(number) && InputIsCorrectFormat(number)){
-        ClearShowedConvertion();
+        
         noErrors = true;
         inputconvert.classList.remove("false");
         [characteristic,mantissa] = setMantissaAndCharacteristic();
@@ -230,7 +238,7 @@ function ConvertMantissa(mantissa){
 }
 
 function ShowCalculationMantissa(result,baseNr){
-
+    
     let row = document.createElement("div");
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
@@ -250,6 +258,8 @@ function ShowCalculationMantissa(result,baseNr){
 }
 
 function ClearShowedConvertion(){
+    finalResultdiv.innerHTML = "";
+
     while(mantissaDiv.firstChild){
         mantissaDiv.removeChild(mantissaDiv.firstChild);
     }
@@ -280,15 +290,12 @@ function ReplaceNumberToHexChars(converResult){
     return decimal.join("");
 }
 
-function AnimateResult(){
-    let charactericresult = document.getElementById("characteristic").getElementsByClassName("leftover");
-    let  mantissaResult = document.getElementById("mantissa").getElementsByClassName("leftover");
-    let finalResultdiv = document.getElementById("idFinalResult");
+function AnimateResult(){    
     let counter = charactericresult.length-1;
     let counterOutput = 0;
     let done = false;
 
-    finalResultdiv.innerHTML = "";
+    
 
     let outputFinalResult = [...finalResult];
     
