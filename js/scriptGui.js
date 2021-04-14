@@ -9,13 +9,14 @@ var priem;
 var convert;
 var berekening;
 
-priem = document.getElementById("idPriemWrapper");
-convert = document.getElementById("idConvert");
-berekening = document.querySelector(".calculation");
+
 
 function init(){
     select = document.getElementById("idSelectOption");
     btnCollapse= document.getElementById("idShowCalculationBtn");
+    priem = document.getElementById("idPriemWrapper");
+    convert = document.getElementById("idConvert");
+    berekening = document.querySelector(".calculation");    
         
     select.addEventListener("change",ActivateOption);
     btnCollapse.addEventListener("click",ToggleExpande)
