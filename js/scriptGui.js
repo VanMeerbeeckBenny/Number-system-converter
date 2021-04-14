@@ -5,6 +5,13 @@ var select;
 var arrow;
 var btnCollapse;
 var isOpen;
+var priem;
+var convert;
+var berekening;
+
+priem = document.getElementById("idPriemWrapper");
+convert = document.getElementById("idConvert");
+berekening = document.querySelector(".calculation");
 
 function init(){
     select = document.getElementById("idSelectOption");
@@ -15,9 +22,7 @@ function init(){
    
 }
 
-function ActivateOption(){
-    let priem = document.getElementById("idPriemWrapper");
-    let convert = document.getElementById("idConvert");
+function ActivateOption(){    
 
     priem.classList.remove("hide");
     convert.classList.remove("hide");
@@ -31,16 +36,14 @@ function ActivateOption(){
     }
 }
 
-function ToggleExpande(){
-    let berekening = document.querySelector(".calculation");
+function ToggleExpande(){    
     arrow = document.getElementById("arrow");
 
     berekening.classList.toggle("large");
-    setTimeout(toggleArrowAndContentBtn,2000);
-              
+    setTimeout(ToggleAnimationOnExpand,2000);              
 }
 
-function toggleArrowAndContentBtn(){    
+function ToggleAnimationOnExpand(){    
         
     if (arrow.className == "bi bi-caret-right-fill"){
         arrow.classList.remove("bi-caret-right-fill");
@@ -54,8 +57,6 @@ function toggleArrowAndContentBtn(){
         arrow.classList.remove("bi-caret-left-fill");
         arrow.classList.add("bi-caret-right-fill");
         btnCollapse.innerHTML = "Toon berekening";
-        isOpen = false;
-        
-    }
-    
+        isOpen = false;        
+    }    
 }
