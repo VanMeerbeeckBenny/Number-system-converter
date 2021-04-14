@@ -133,7 +133,7 @@ function Convert(){
         feedbackConvert = feedbackNegativeNumber;        
         inputconvert.classList.add("false");        
     }
-
+    
     if(isOpen && noErrors){
         AnimateResult();
     }
@@ -302,6 +302,8 @@ function AnimateResult(){
 
     
 
+    if(typeof finalResult != "undefined"){
+    finalResultdiv.innerHTML = ""; 
     let outputFinalResult = [...finalResult];
     
     let interval = setInterval(HighlightCharacteristic,250);
@@ -366,5 +368,6 @@ function AnimateResult(){
             btnCollapse.removeAttribute("disabled");
         }       
     }  
+}
 }
 
