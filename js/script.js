@@ -166,7 +166,9 @@ function ConvertCharacteristic(characteristic){
     let result = characteristic;
     let baseNumber = base.value;
     
-
+    if(characteristic == 0){ // check for number below 1 (for example:0.1,0.5)
+        ShowCalculationCharacteristic(result,baseNumber);
+    }
     while (result > 0){
         
         ShowCalculationCharacteristic(result,baseNumber);
