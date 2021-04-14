@@ -17,6 +17,7 @@ var feedbackPrime = "";
 var feedbackConvert= "";
 var noErrors = true;
 
+
 var btnCheckPriem;
 var btnConvert;
 
@@ -25,15 +26,13 @@ function init(){
    inputpriem = document.getElementById("inputPriem");
    maxNrAfterComma = document.getElementById("inputMaxNrAfterComma");
    inputconvert = document.getElementById("inputConvert");
-   base = document.getElementById("idBaseNr");
+   base = document.getElementById("idbaseNumber");
    feedback = document.getElementById("IdFeedback");
    characteristicDiv = document.getElementById("characteristic");
    mantissaDiv = document.getElementById("mantissa");
    charactericresult = document.getElementById("characteristic").getElementsByClassName("leftover");
    mantissaResult = document.getElementById("mantissa").getElementsByClassName("leftover");
-   finalResultdiv = document.getElementById("idFinalResult");
-   
-   
+   finalResultdiv = document.getElementById("idFinalResult");     
 
    btnCheckPriem = document.getElementById("checkPriemBtn");
    btnConvert = document.getElementById("idConvertBtn");  
@@ -165,14 +164,14 @@ function setMantissaAndCharacteristic(){
 function ConvertCharacteristic(characteristic){
     let resultBeforeComma = [];
     let result = characteristic;
-    let baseNr = base.value;
+    let baseNumber = base.value;
     
 
     while (result > 0){
         
-        ShowCalculationCharacteristic(result,baseNr);
-        resultBeforeComma.unshift(result%baseNr);
-        result = (result - (result%baseNr)) / baseNr
+        ShowCalculationCharacteristic(result,baseNumber);
+        resultBeforeComma.unshift(result%baseNumber);
+        result = (result - (result%baseNumber)) / baseNumber
         }   
 
     resultBeforeComma = resultBeforeComma.length == 0?[0]:resultBeforeComma;
@@ -180,19 +179,19 @@ function ConvertCharacteristic(characteristic){
     return resultBeforeComma
 }
 
-function ShowCalculationCharacteristic(result,baseNr){
+function ShowCalculationCharacteristic(result,baseNumber){
 
     let row = document.createElement("div");
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
-    let feedback = `${result}/${baseNr}=${(result - (result%baseNr)) / baseNr}`;       
+    let feedback = `${result}/${baseNumber}=${(result - (result%baseNumber)) / baseNumber}`;       
 
     row.setAttribute("class","myrow");
     caclulation.setAttribute("class","calculationFeedback")
     leftover.setAttribute("class","leftover");
     
     caclulation.innerHTML = feedback;
-    leftover.innerHTML= result%baseNr;
+    leftover.innerHTML= result%baseNumber;
 
     row.appendChild(caclulation);
     row.appendChild(leftover);
@@ -203,29 +202,29 @@ function ConvertMantissa(mantissa){
     let resultAfterComma = [];
     maxLengthMantissa = mantissa.length;
     let result =`0.${mantissa}` ;
-    let baseNr = base.value;
+    let baseNumber = base.value;
     let counter = 0;
     const maxIteration = NotNegativeNumberOrEmpty(maxNrAfterComma.value)?maxNrAfterComma.value:20;    
     
     while (result != 0 && counter < maxIteration){
-        ShowCalculationMantissa(result,baseNr);
-        if(result * baseNr >= 1){
-            resultAfterComma.push(Math.floor(result * baseNr));
-            result = `${result * baseNr}`;
+        ShowCalculationMantissa(result,baseNumber);
+        if(result * baseNumber >= 1){
+            resultAfterComma.push(Math.floor(result * baseNumber));
+            result = `${result * baseNumber}`;
             result = [...result];
             result.find(x=> x ==".")?result.splice(0,result.indexOf("."),0):result = 0;
             result = result != 0 ?result.join(""):0;
-            /*result =(result * baseNr)- Math.floor(result * baseNr); 
+            /*result =(result * baseNumber)- Math.floor(result * baseNumber); 
             this was original used but the used formula is more accurate */
         }else{
          resultAfterComma.push("0");
-         result =(result * baseNr)
+         result =(result * baseNumber)
         }   
         
         counter++;     
     }
     if(counter == maxIteration){
-        let mantissaDiv = document.getElementById("mantissa");
+        
         let row = document.createElement("div");
         let caclulation = document.createElement("div");
 
@@ -242,20 +241,20 @@ function ConvertMantissa(mantissa){
     return resultAfterComma;
 }
 
-function ShowCalculationMantissa(result,baseNr){
+function ShowCalculationMantissa(result,baseNumber){
 
     let row = document.createElement("div");
     let caclulation = document.createElement("div");
     let leftover = document.createElement("div"); 
     
-    let feedback = `${parseFloat(result).toFixed(maxLengthMantissa)} * ${baseNr} = ${parseFloat(result * baseNr).toFixed(maxLengthMantissa)}`;       
+    let feedback = `${parseFloat(result).toFixed(maxLengthMantissa)} * ${baseNumber} = ${parseFloat(result * baseNumber).toFixed(maxLengthMantissa)}`;       
     
     row.setAttribute("class","myrow");
     caclulation.setAttribute("class","calculationFeedback")
     leftover.setAttribute("class","leftover");
     
     caclulation.innerHTML = feedback;
-    leftover.innerHTML= Math.floor(result * baseNr);
+    leftover.innerHTML= Math.floor(result * baseNumber);
 
     row.appendChild(caclulation);
     row.appendChild(leftover);
@@ -298,76 +297,77 @@ function ReplaceNumberToHexChars(converResult){
 function AnimateResult(){    
     let counter = charactericresult.length-1;
     let counterOutput = 0;
-    let done = false;
-
-    
+    let done = false;    
 
     if(typeof finalResult != "undefined"){
-    finalResultdiv.innerHTML = ""; 
-    let outputFinalResult = [...finalResult];
-    
-    let interval = setInterval(HighlightCharacteristic,250);
-    let interval2 = setInterval(ResetCharacteristic,500);    
-    btnConvert.setAttribute("disabled","true");
-    btnCollapse.setAttribute("disabled","true");
 
-    function HighlightCharacteristic(){ 
-        if(counter < 0){
-            clearInterval(interval);
-            }else{
-                charactericresult[counter].style.fontSize = "1.5em" ;
-                charactericresult[counter].style.color="red" ;                
-            }           
-            
-        }
+        finalResultdiv.innerHTML = ""; 
+        let outputFinalResult = [...finalResult];
+        
+        let interval = setInterval(HighlightCharacteristic,250);
+        let interval2 = setInterval(ResetCharacteristic,500);    
+        btnConvert.setAttribute("disabled","true");
+        btnCollapse.setAttribute("disabled","true");
 
-    function ResetCharacteristic(){   
-        if(counter < 0){            
-            clearInterval(interval2);
-            done =true;  
-            counter = 0;
-            counterOutput ++;            
-        }else{
-            charactericresult[counter].style.fontSize = "1em" ; 
-            charactericresult[counter].style.color="black" ;             
-            finalResultdiv.innerHTML += outputFinalResult[counterOutput];
-            counter--; 
-            counterOutput++; 
-        }  
-        
-        if(done && typeof outputFinalResult[counterOutput]  != "undefined"){
-            interval = setInterval(HighlightMantissa,250);
-            interval2 = setInterval(ResetMantissa,500);
-            finalResultdiv.innerHTML += ".";       
-            
-            function HighlightMantissa(){ 
-                if(counter >= mantissaResult.length){
-                    clearInterval(interval);
-                    } else{
-                        mantissaResult[counter].style.fontSize = "1.5em" ;
-                        mantissaResult[counter].style.color="red" ;  
-                    }              
-                }
-        
-            function ResetMantissa(){   
-                if(counter >= mantissaResult.length){                    
-                    clearInterval(interval2);
-                    btnConvert.removeAttribute("disabled");
-                    btnCollapse.removeAttribute("disabled");
-                    }else{                        
-                        mantissaResult[counter].style.fontSize = "1em" ; 
-                        mantissaResult[counter].style.color="black" ; 
-                        finalResultdiv.innerHTML += outputFinalResult[counterOutput];                
-                        counter++; 
-                        counterOutput ++;                
-                        done =false;                        
-                    }              
+        function HighlightCharacteristic(){ 
+            if(counter < 0){
+                clearInterval(interval);
+                }else{
+                    charactericresult[counter].style.fontSize = "1.5em" ;
+                    charactericresult[counter].style.color="red" ;                
+                }           
+                
             }
-        }else if (outputFinalResult.length == counterOutput){
-            btnConvert.removeAttribute("disabled");
-            btnCollapse.removeAttribute("disabled");
-        }       
-    }  
+
+        function ResetCharacteristic(){   
+            if(counter < 0){            
+                clearInterval(interval2);
+                done =true;  
+                counter = 0;                          
+            }else{
+                charactericresult[counter].style.fontSize = "1em" ; 
+                charactericresult[counter].style.color="black" ;             
+                finalResultdiv.innerHTML += outputFinalResult[counterOutput];
+                counter--; 
+                counterOutput++; 
+            }  
+            
+            if(done && typeof outputFinalResult[counterOutput]  != "undefined"){
+                interval = setInterval(HighlightMantissa,250);
+                interval2 = setInterval(ResetMantissa,500);
+
+            //print seperator then ++ for getting first number after seperator ready to highlight
+                finalResultdiv.innerHTML += outputFinalResult[counterOutput]; 
+                counterOutput ++;        
+                
+                function HighlightMantissa(){ 
+                    if(counter >= mantissaResult.length){
+                        clearInterval(interval);
+                        } else{
+                            mantissaResult[counter].style.fontSize = "1.5em" ;
+                            mantissaResult[counter].style.color="red" ;  
+                        }              
+                    }
+            
+                function ResetMantissa(){   
+                    if(counter >= mantissaResult.length){                    
+                        clearInterval(interval2);
+                        btnConvert.removeAttribute("disabled");
+                        btnCollapse.removeAttribute("disabled");
+                        }else{                        
+                            mantissaResult[counter].style.fontSize = "1em" ; 
+                            mantissaResult[counter].style.color="black" ; 
+                            finalResultdiv.innerHTML += outputFinalResult[counterOutput];                
+                            counter++; 
+                            counterOutput ++;                
+                            done =false;                        
+                        }              
+                }
+            }else if (outputFinalResult.length == counterOutput){
+                btnConvert.removeAttribute("disabled");
+                btnCollapse.removeAttribute("disabled");
+            }       
+        }  
 }
 }
 
