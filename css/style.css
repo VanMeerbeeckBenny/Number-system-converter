@@ -132,7 +132,8 @@ main{
   width:calc(100% - 20px);
   bottom:0px;
   margin-bottom: 10px;  
-  word-wrap: break-word;         
+  word-wrap: break-word; 
+  font-weight: bold;       
 }
 
 #collapse{     
