@@ -225,7 +225,7 @@ function ConvertMantissa(mantissa){
         
         counter++;     
     }
-    if(counter == maxIteration){
+    if(result != 0){
         
         let row = document.createElement("div");
         let caclulation = document.createElement("div");
